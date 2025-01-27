@@ -29,6 +29,6 @@
   "docker_login": "andreriesco",
   "docker_registry": "registry-1.docker.io",
   "docker_password": "secret",
-  "tcb.clientId": "tzn_api_89d2781c-fc9a-44b6-8deb-4db026aaa0b4_wxFFCE",
+  "tcb.clientId": "tzn_api_89d2781c-fc9a-44b6-8deb-4db026aaa0b4_29rmqD",
   "tcb.clientSecret": "secret"
 }
