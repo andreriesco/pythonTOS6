@@ -1,4 +1,5 @@
 {
-  "prodRuntimeDeps": [],
-  "devRuntimeDeps": []
+    "buildDeps": [],
+    "prodRuntimeDeps": [],
+    "devRuntimeDeps": []
 }
