@@ -4,12 +4,12 @@ on:
 
 jobs:
   build-deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     name: Build & Deploy
     container:
       image: torizonextras/torizon-dev:dev
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Get Host Absolute Workspace Path
         run: |
