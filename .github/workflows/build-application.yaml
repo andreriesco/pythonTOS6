@@ -6,6 +6,8 @@ jobs:
   build-deploy:
     runs-on: ubuntu-24.04
     name: Build & Deploy
+    container:
+      image: ubuntu:24.04
     steps:
       - uses: actions/checkout@v4
 
