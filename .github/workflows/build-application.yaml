@@ -22,6 +22,8 @@ jobs:
           apt-get install -y python3 python3-pip pipx
           bash ./.conf/setup-xonsh.sh
           ln -s /root/.local/bin/xonsh /usr/bin/xonsh
+          env | grep $PATH
+          whereis xonsh
           xonsh -h
 
       - name: Update torizon-utils module
