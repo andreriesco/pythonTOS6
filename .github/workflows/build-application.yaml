@@ -22,6 +22,7 @@ jobs:
           apt-get install -y python3 python3-pip pipx
           bash ./.conf/setup-xonsh.sh
           ln -s /root/.local/bin/xonsh /usr/bin/xonsh
+          which xonsh
 
       - name: Update torizon-utils module
         run: |
@@ -37,8 +38,6 @@ jobs:
           PLATFORM_CLIENT_SECRET: ${{ secrets.PLATFORM_CLIENT_SECRET }}
           PLATFORM_CREDENTIALS: ${{ secrets.PLATFORM_CREDENTIALS }}
         run: |
-
-          bash ./.conf/setup-xonsh.sh
           import os
           import json
 
