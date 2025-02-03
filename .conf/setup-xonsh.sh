@@ -13,6 +13,7 @@ fi
 set -e
 
 pipx install xonsh
+pipx ensurepath
 pipx inject xonsh distro
 pipx inject xonsh shtab
 pipx inject xonsh pyyaml
