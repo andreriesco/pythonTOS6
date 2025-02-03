@@ -23,7 +23,7 @@ jobs:
 
       - name: Update torizon-utils module
         run: |
-          pipx inject -f xonsh ./scripts/utils/pip/
+          pipx inject -f xonsh ./conf/pip/
 
       - name: Initial Setup
         shell: xonsh {0}
