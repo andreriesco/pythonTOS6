@@ -904,6 +904,7 @@ class TaskRunner:
 
             os.chdir(_cwd)
 
+        print(f"{_cmd} {' '.join(_args)}{_is_background}")
         # execute the task
         _cmd_join = f"{_cmd} {' '.join(_args)}{_is_background}"
 
