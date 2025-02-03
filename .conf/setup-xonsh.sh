@@ -29,8 +29,8 @@ if ! grep -q "export PATH=\$PATH:\$HOME/.local/bin" ~/.bashrc; then
     echo "export PATH=\$PATH:\$HOME/.local/bin" >> ~/.bashrc
 fi
 
+touch ~/.xonshrc
 # also for .xonshrc itself
 if ! grep -q "\$HOME/.local/bin" ~/.xonshrc; then
-    touch ~/.xonshrc
     echo "\$PATH.insert(0, '$HOME/.local/bin')" >> ~/.xonshrc
 fi
