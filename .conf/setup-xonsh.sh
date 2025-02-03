@@ -32,3 +32,5 @@ fi
 if ! grep -q "\$HOME/.local/bin" ~/.xonshrc; then
     echo "\$PATH.insert(0, '$HOME/.local/bin')" >> ~/.xonshrc
 fi
+
+which xonsh
