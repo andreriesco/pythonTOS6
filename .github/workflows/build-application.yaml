@@ -71,6 +71,7 @@ jobs:
           PLATFORM_CLIENT_ID: ${{ secrets.PLATFORM_CLIENT_ID }}
           PLATFORM_CLIENT_SECRET: ${{ secrets.PLATFORM_CLIENT_SECRET }}
         run: |
+          env
           xonsh ./.vscode/tasks.xsh run docker-login
           xonsh ./.vscode/tasks.xsh run run-torizon-binfmt
           xonsh ./.vscode/tasks.xsh run tcb-platform-publish
