@@ -19,13 +19,6 @@
   "tcb.version": "3.11.0",
   "torizon.gpuPrefixRC": true,
   "python.defaultInterpreterPath": "./.venv/bin/python3",
-  "docker.environment": {
-    "DOCKER_HOST": "tcp://192.168.31.242:2375",
-    "DEBUG_SSH_PORT": "2222",
-    "DEBUG_PORT1": "2222",
-    "DEBUG_PORT2": "2223",
-    "DEBUG_PORT3": "2224"
-  },
   "docker_login": "andreriesco",
   "docker_registry": "registry-1.docker.io",
   "tcb.clientId": "tzn_api_89d2781c-fc9a-44b6-8deb-4db026aaa0b4_29rmqD",
