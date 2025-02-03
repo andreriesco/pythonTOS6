@@ -6,8 +6,6 @@ jobs:
   build-deploy:
     runs-on: ubuntu-24.04
     name: Build & Deploy
-    container:
-      image: torizonextras/torizon-dev:dev
     steps:
       - uses: actions/checkout@v4
 
@@ -15,6 +13,17 @@ jobs:
         run: |
           echo "${{ github.workspace }}" >> abs-path
           cat abs-path
+
+      - name: Setup Xonsh
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3 python3-pip pipx
+          sudo bash ./scripts/bash/setup-xonsh.sh
+          sudo ln -s /root/.local/bin/xonsh /usr/bin/xonsh
+
+      - name: Update torizon-utils module
+        run: |
+          pipx inject -f xonsh ./scripts/utils/pip/
 
       - name: Initial Setup
         shell: xonsh {0}
@@ -27,6 +36,10 @@ jobs:
         run: |
           import os
           import json
+
+          $RAISE_SUBPROC_ERROR = True
+          $XONSH_SHOW_TRACEBACK = True
+          $UPDATE_OS_ENVIRON = True
 
           with open(".vscode/settings.json") as f:
               settings = json.load(f)
