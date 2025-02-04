@@ -29,7 +29,7 @@ if ! grep -q "export PATH=\$PATH:\$HOME/.local/bin" ~/.bashrc; then
     echo "export PATH=\$PATH:\$HOME/.local/bin" >> ~/.bashrc
 fi
 
-if [ ! "\$HOME/.xonshrc" ]; then
+if [ ! -f ~/.xonshrc ]; then
     touch ~/.xonshrc
 fi
 # also for .xonshrc itself
