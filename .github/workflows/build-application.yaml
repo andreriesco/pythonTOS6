@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-24.04
     name: Build & Deploy
     container:
-      image: debian:bookworm-slim
+      image: torizonextras/xonsh:dev
     steps:
       - uses: actions/checkout@v4
 
@@ -15,20 +15,6 @@ jobs:
         run: |
           echo "${{ github.workspace }}" >> abs-path
           cat abs-path
-
-      - name: Setup Xonsh
-        run: |
-          apt-get update
-          apt-get install -y python3 python3-pip pipx
-          bash ./.conf/setup-xonsh.sh
-          ln -s $HOME/.local/bin/xonsh /usr/bin/xonsh
-          env | grep $PATH
-          whereis xonsh
-          xonsh -h
-
-      - name: Update torizon-utils module
-        run: |
-          pipx inject -f xonsh ./.conf/pip/
 
       - name: Initial Setup
         shell: xonsh {0}
