@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-24.04
     name: Build & Deploy
     container:
-      image: torizonextras/xonsh:dev
+      image: andreriesco/torizon-xonsh
     steps:
       - uses: actions/checkout@v4
 
