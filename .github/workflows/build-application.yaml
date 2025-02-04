@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-24.04
     name: Build & Deploy
     container:
-      image: ubuntu:24.04
+      image: debian:bookworm-slim
     steps:
       - uses: actions/checkout@v4
 
