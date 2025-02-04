@@ -21,7 +21,7 @@ jobs:
           apt-get update
           apt-get install -y python3 python3-pip pipx
           bash ./.conf/setup-xonsh.sh
-          ln -s /root/.local/bin/xonsh /usr/bin/xonsh
+          ln -s $HOME/.local/bin/xonsh /usr/bin/xonsh
           env | grep $PATH
           whereis xonsh
           xonsh -h
