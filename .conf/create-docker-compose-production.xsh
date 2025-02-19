@@ -37,6 +37,8 @@ _iterative = False
 if "TASK_ITERATIVE" in os.environ:
     _iterative = True
 
+print("aaaaaaa")
+print("iterative")
 # these are needed
 _compo_file_path = get_arg_iterative(
     index=1,
@@ -138,10 +140,12 @@ except FileNotFoundError as fex:
     )
 
 _local_registry = _settings["host_ip"]
-
+# debug.breakpoint()
 # set env
 os.environ["LOCAL_REGISTRY"] = f"{_local_registry}:5002"
 os.environ["TAG"] = _tag
+
+print(_docker_login)
 
 if _registry == "registry-1.docker.io":
     os.environ["DOCKER_LOGIN"] = _docker_login
@@ -170,6 +174,8 @@ print("✅ Image rebuild and tagged", color=Color.GREEN)
 
 # push it
 print(f"Pushing {os.environ['DOCKER_LOGIN']}/{_image_name}:{_tag} ...")
+
+print(_docker_login)
 
 echo @(_docker_psswd) | docker login --username @(_docker_login) --password-stdin
 docker push @(f"{os.environ['DOCKER_LOGIN']}/{_image_name}:{_tag}")
