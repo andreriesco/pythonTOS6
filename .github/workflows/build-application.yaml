@@ -68,7 +68,7 @@ jobs:
         run: |
           env
           echo $DOCKER_PSSWD | docker login --username $DOCKER_LOGIN --password-stdin
-          xonsh $(pwd)/.conf/create-docker-compose-production.xsh $(pwd) andreriesco v0.0.0 registry-1.docker.io pythontos6
+          xonsh ${PWD}/.conf/create-docker-compose-production.xsh ${PWD} andreriesco v0.0.0 registry-1.docker.io pythontos6
 
           xonsh ./.vscode/tasks.xsh run docker-login
           xonsh ./.vscode/tasks.xsh run run-torizon-binfmt
