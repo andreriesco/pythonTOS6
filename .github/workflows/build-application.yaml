@@ -68,3 +68,27 @@ jobs:
         run: |
           env
           echo $DOCKER_PSSWD | docker login --username $DOCKER_LOGIN --password-stdin
+          xonsh $(pwd)/.conf/create-docker-compose-production.xsh $(pwd) andreriesco v0.0.0 registry-1.docker.io pythontos6
+
+          xonsh ./.vscode/tasks.xsh run docker-login
+          xonsh ./.vscode/tasks.xsh run run-torizon-binfmt
+          xonsh ./.vscode/tasks.xsh run tcb-platform-publish
+
+      - name: Deploy Application
+        shell: xonsh {0}
+        env:
+          TASKS_DISABLE_INTERACTIVE_INPUT: "True"
+          TASKS_OVERRIDE_ENV: "False"
+          PLATFORM_CLIENT_ID: ${{ secrets.PLATFORM_CLIENT_ID }}
+          PLATFORM_CLIENT_SECRET: ${{ secrets.PLATFORM_CLIENT_SECRET }}
+        if: ${{ github.ref == 'refs/heads/main' }}
+        run: |
+          xonsh ./.vscode/tasks.xsh run platform-update-fleet
+
+      - name: Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: docker-compose-prod
+          path: |
+            docker-compose.prod.yml
+            docker-compose.prod.lock.yml
