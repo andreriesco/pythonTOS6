@@ -153,8 +153,7 @@ else:
     os.environ["DOCKER_LOGIN"] = f"{_registry}/{_docker_login}"
 
 # make sure to have binfmt
-print("Executing binfmt ...")
-# docker run --rm --privileged -it torizon/binfmt:latest
+xonsh ./.vscode/tasks.xsh run @(f"run-torizon-binfmt")
 
 # start to build the image
 cd @(_compo_file_path)
@@ -177,7 +176,8 @@ print(f"Pushing {os.environ['DOCKER_LOGIN']}/{_image_name}:{_tag} ...")
 
 print(_docker_login)
 
-echo @(_docker_psswd) | docker login --username @(_docker_login) --password-stdin
+#echo @(_docker_psswd) | docker login --username @(_docker_login) --password-stdin
+xonsh ./.vscode/tasks.xsh run @(f"docker-login")
 docker push @(f"{os.environ['DOCKER_LOGIN']}/{_image_name}:{_tag}")
 
 print("✅ Image pushed", color=Color.GREEN)
