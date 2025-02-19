@@ -69,3 +69,4 @@ jobs:
           env
 
           xonsh ./.vscode/tasks.xsh run docker-login
+          xonsh ./.vscode/tasks.xsh run run-torizon-binfmt
