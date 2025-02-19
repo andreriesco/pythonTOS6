@@ -38,7 +38,7 @@ if "TASK_ITERATIVE" in os.environ:
     _iterative = True
 
 print("aaaaaaa")
-print("iterative")
+print(_iterative)
 # these are needed
 _compo_file_path = get_arg_iterative(
     index=1,
@@ -154,7 +154,7 @@ else:
 
 # make sure to have binfmt
 print("Executing binfmt ...")
-docker run --rm --privileged -it torizon/binfmt:latest
+# docker run --rm --privileged -it torizon/binfmt:latest
 
 # start to build the image
 cd @(_compo_file_path)
