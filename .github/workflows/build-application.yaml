@@ -67,6 +67,7 @@ jobs:
           PLATFORM_CLIENT_SECRET: ${{ secrets.PLATFORM_CLIENT_SECRET }}
         run: |
           env
+          echo "$DOCKER_PSSWD" | docker login --username "$DOCKER_LOGIN" --password-stdin
           xonsh ./.vscode/tasks.xsh run docker-login
           xonsh ./.vscode/tasks.xsh run run-torizon-binfmt
           xonsh ./.vscode/tasks.xsh run tcb-platform-publish
