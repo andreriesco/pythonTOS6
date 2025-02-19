@@ -70,3 +70,4 @@ jobs:
 
           xonsh ./.vscode/tasks.xsh run docker-login
           xonsh ./.vscode/tasks.xsh run run-torizon-binfmt
+          xonsh ./.vscode/tasks.xsh run create-production-image
