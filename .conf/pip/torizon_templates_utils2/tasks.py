@@ -824,16 +824,6 @@ class TaskRunner:
         if _task is None:
             raise ReferenceError(f"Task with label [{label}] not found")
 
-        _depends = []
-        if _task.dependsOn is not None:
-            _depends = _task.dependsOn
-
-        # first we need to run the dependencies
-        for dep in _depends:
-            self.run_task(dep)
-
-        print(f"> Executing task: {label} <", color=Color.GREEN)
-
         # prepare the command
         _cmd = _task.command
 
@@ -856,6 +846,16 @@ class TaskRunner:
         if _task.options is not None:
             _env = _task.options.env
             _cwd = _task.options.cwd
+
+        _depends = []
+        if _task.dependsOn is not None:
+            _depends = _task.dependsOn
+
+        # first we need to run the dependencies
+        for dep in _depends:
+            self.run_task(dep)
+
+        print(f"> Executing task: {label} <", color=Color.GREEN)
 
         _is_background = ""
         if _task.isBackground:
@@ -904,7 +904,6 @@ class TaskRunner:
 
             os.chdir(_cwd)
 
-        print(f"{_cmd} {' '.join(_args)}{_is_background}")
         # execute the task
         _cmd_join = f"{_cmd} {' '.join(_args)}{_is_background}"
 
@@ -914,12 +913,16 @@ class TaskRunner:
             print(f"Parsed Args: {_args}", color=Color.YELLOW)
             print(f"Parsed Command: {_cmd_join}", color=Color.YELLOW)
 
+        # use bash to execute the VSCode tasks commands and scripts, as they
+        # are written and tested in bash. Valid just for commands of shell
+        # type, not process type ones
         _ret = subprocess.run(
             [_cmd, *_args] if not _shell else _cmd_join,
             stdout=None,
             stderr=None,
             env=os.environ,
-            shell=_shell
+            shell=_shell,
+            executable="/bin/bash" if _shell else None
         )
 
         # go back to the last cwd
