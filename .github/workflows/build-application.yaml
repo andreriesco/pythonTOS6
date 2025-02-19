@@ -67,4 +67,4 @@ jobs:
           PLATFORM_CLIENT_SECRET: ${{ secrets.PLATFORM_CLIENT_SECRET }}
         run: |
           env
-          echo "$DOCKER_PSSWD" | docker login --username "$DOCKER_LOGIN" --password-stdin
+          echo $DOCKER_PSSWD | docker login --username $DOCKER_LOGIN --password-stdin
