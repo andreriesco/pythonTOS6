@@ -66,7 +66,6 @@ jobs:
           PLATFORM_CLIENT_ID: ${{ secrets.PLATFORM_CLIENT_ID }}
           PLATFORM_CLIENT_SECRET: ${{ secrets.PLATFORM_CLIENT_SECRET }}
         run: |
-          env
           xonsh ./.vscode/tasks.xsh run tcb-platform-publish
 
       - name: Deploy Application

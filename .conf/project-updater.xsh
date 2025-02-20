@@ -9,6 +9,8 @@
 
 # use the xonsh environment to update the OS environment
 $UPDATE_OS_ENVIRON = True
+# Get the full log of error
+$XONSH_SHOW_TRACEBACK = True
 # always return if a cmd fails
 $RAISE_SUBPROC_ERROR = True
 
@@ -390,6 +392,11 @@ cp -f \
 cp -f \
     @(f"{os.environ['HOME']}/.apollox/scripts/torizon-io.xsh") \
     @(f"{project_folder}/.conf/torizon-io.xsh")
+
+# DOCKER LOGIN:
+cp -f \
+    @(f"{os.environ['HOME']}/.apollox/scripts/docker-login.xsh") \
+    @(f"{project_folder}/.conf/docker-login.xsh")
 
 # CREATE DOCKER COMPOSE PRODUCTION:
 cp -f \

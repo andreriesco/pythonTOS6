@@ -9,7 +9,7 @@
             "preLaunchTask": "host-install-pip-requirements"
         },
         {
-            "name": "Torizon ARMv7",
+            "name": "Torizon arm32",
             "type": "debugpy",
             "request": "attach",
             "justMyCode": false,
@@ -26,7 +26,7 @@
             "preLaunchTask": "deploy-torizon-arm"
         },
         {
-            "name": "Torizon ARMv8",
+            "name": "Torizon arm64",
             "type": "debugpy",
             "request": "attach",
             "justMyCode": false,
